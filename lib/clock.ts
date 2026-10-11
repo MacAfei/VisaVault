@@ -6,12 +6,13 @@
  */
 
 export function getToday(): Date {
-  const override = (process.env.NEXT_PUBLIC_DEMO_TODAY || process.env.DEMO_TODAY || '2026-05-15').trim();
+  const override = (process.env.NEXT_PUBLIC_DEMO_TODAY || process.env.DEMO_TODAY || '').trim();
   if (override && /^\d{4}-\d{2}-\d{2}$/.test(override)) {
     const [year, month, day] = override.split('-').map(Number);
     return new Date(Date.UTC(year, month - 1, day, 12, 0, 0));
   }
-  return new Date(Date.UTC(2026, 4, 15, 12, 0, 0));
+  const now = new Date();
+  return new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), 12, 0, 0));
 }
 
 export function getTodayString(): string {

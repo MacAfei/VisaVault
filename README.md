@@ -19,12 +19,18 @@ VisaVault solves the two fundamental friction points in international travel vis
 # Install dependencies
 npm install
 
-# Initialize SQLite database and run Prisma migrations
-npx prisma db push
+# Copy .env.example to .env.local and set DATABASE_URL and DIRECT_URL
 
-# Seed demo scenarios (1 traveler wallet, 3 demo moments, 5 agency cases)
+# Create/apply the local development migration
+npm run db:migrate:dev
+
+# Seed demo scenarios (local/demo environments only)
 npx tsx prisma/seed.ts
 ```
+
+For production, configure `DATABASE_URL` with the Neon pooled connection string and `DIRECT_URL` with the Neon direct connection string. Run `npm run db:migrate:deploy` once as a deployment step before serving the new application version. Do not run the demo seed command against production.
+
+The initial migration creates the schema in an empty PostgreSQL database. It does not copy data from the ignored local SQLite database; migrate any data you need separately before switching environments.
 
 ### 3. Start Development Server
 ```bash
@@ -46,16 +52,17 @@ Configuration is handled in `.env.local` (example provided in `.env.example`):
 
 | Variable | Description | Default |
 |---|---|---|
-| `DATABASE_URL` | SQLite database location | `"file:./dev.db"` |
+| `DATABASE_URL` | Neon pooled PostgreSQL URL for application queries (`sslmode=require`) | Required |
+| `DIRECT_URL` | Neon direct, non-pooled PostgreSQL URL for Prisma migrations (`sslmode=require`) | Required |
 | `GEMINI_API_KEY` | Google Gemini API key for multimodal document OCR | `""` (falls back to mock if empty) |
 | `GEMINI_MODEL` | Google Gemini model name | `"gemini-2.5-flash"` |
-| `AGENCY_PASSWORD` | Password protecting agency console (`/agency`) | `"visa-vault-agent"` |
+| `AGENCY_PASSWORD` | Password protecting agency console (`/agency`); set a unique secret outside demo environments | Required |
 | `DEMO_MODE` | Force instant offline demo mock extraction | `"false"` |
-| `DEMO_TODAY` | Deterministic clock override date (`YYYY-MM-DD`) | `"2026-05-15"` |
+| `DEMO_TODAY` | Optional deterministic clock override (`YYYY-MM-DD`); leave unset in production | Current UTC date |
 
 > [!IMPORTANT]
 > **Deterministic Clock Logic (`lib/clock.ts`):**  
-> All business logic, validity margins, stay limits, and reminder calculations use `getToday()` and `getTodayString()` from `lib/clock.ts`. `new Date()` is never called in business logic. Setting `DEMO_TODAY="2026-05-15"` guarantees all hackathon demo scenarios function identically regardless of the day or time zone.
+> All business logic, validity margins, stay limits, and reminder calculations use `getToday()` and `getTodayString()` from `lib/clock.ts`. Setting `DEMO_TODAY="2026-05-15"` guarantees all hackathon demo scenarios function identically regardless of the day or time zone. Leave it unset in production to use the current UTC date.
 
 ---
 
@@ -107,7 +114,8 @@ visa-vault/
 │   ├── db.ts                           # Prisma singleton client
 │   └── config.ts                       # Assumptions for staff time saved
 ├── prisma/
-│   ├── schema.prisma                   # Full SQLite schema
+│   ├── schema.prisma                   # PostgreSQL schema
+│   ├── migrations/                     # Committed PostgreSQL migrations
 │   └── seed.ts                         # 3 demo moments & 5 agency cases
 ├── tests/                              # Vitest suite (16 unit tests)
 ├── public/samples/                     # Watermarked specimen mock documents
@@ -203,5 +211,5 @@ To add a new country or consular jurisdiction (e.g., Canada, Australia, Singapor
 For the purposes of this 12-hour hackathon build:
 1. **Authentication:** The agency portal is protected by `AGENCY_PASSWORD` session verification. A production deployment requires enterprise SSO/SAML, multi-factor authentication (MFA), and role-based access control (RBAC).
 2. **File Storage at Rest:** Uploaded files are stored locally in the git-ignored `data/uploads/` directory. Production requires encrypted object storage (e.g., AES-256 GCS / S3 buckets with signed expiring URLs).
-3. **Database:** SQLite is used via Prisma for zero-config local portability. Production would use PostgreSQL or Google Cloud SQL with automated failover.
+3. **Database:** Prisma uses Neon PostgreSQL. Configure separate pooled and direct connection URLs, run committed migrations during deployment, and configure Neon backups/monitoring appropriate to your recovery objectives.
 4. **Offline Fallback:** If `GEMINI_API_KEY` is not provided or `DEMO_MODE=true`, the system falls back to realistic mock extraction results keyed by filename or document category to guarantee a flawless live demo without API rate limit risks.
