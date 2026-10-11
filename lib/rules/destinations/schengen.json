@@ -1,0 +1,101 @@
+{
+  "destination": "Schengen Area",
+  "region": "SCHENGEN",
+  "lastReviewed": "2026-04-15",
+  "sourceComment": "Based on EU Visa Code (Regulation EC No 810/2009). Consular rules change periodically and must always be cross-verified with the official embassy or consulate.",
+  "requiredDocumentTypes": [
+    "PASSPORT",
+    "FLIGHT_BOOKING",
+    "HOTEL_BOOKING",
+    "INSURANCE",
+    "BANK_STATEMENT",
+    "EMPLOYMENT_LETTER",
+    "PHOTO"
+  ],
+  "requirements": [
+    {
+      "id": "REQ-SCH-PASSPORT-VALIDITY",
+      "documentType": "PASSPORT",
+      "severity": "BLOCKER",
+      "description": "Passport must be valid at least 3 months after scheduled departure from Schengen and issued within the last 10 years.",
+      "whyRequired": "Mandatory under Article 12 of the Schengen Visa Code; border authorities will deny visa issuance or entry if the 3-month buffer is violated.",
+      "checkFn": "checkPassportValiditySchengen",
+      "params": {
+        "minBufferMonths": 3,
+        "maxPassportAgeYears": 10
+      }
+    },
+    {
+      "id": "REQ-SCH-INSURANCE",
+      "documentType": "INSURANCE",
+      "severity": "BLOCKER",
+      "description": "Travel medical insurance with minimum €30,000 coverage valid across all Schengen states for the full stay duration.",
+      "whyRequired": "Mandated by Article 15 of Regulation (EC) No 810/2009 to cover repatriation, emergency medical treatment, and hospital care.",
+      "checkFn": "checkInsuranceSchengen",
+      "params": {
+        "minCoverageEur": 30000,
+        "regionRequired": "SCHENGEN"
+      }
+    },
+    {
+      "id": "REQ-SCH-BANK-STATEMENT",
+      "documentType": "BANK_STATEMENT",
+      "severity": "BLOCKER",
+      "description": "Bank statement covering the past 3 months, issued and stamped within the last 30 days.",
+      "whyRequired": "Proves genuine financial solvency and ties. Consulates reject outdated statements or those missing regular activity.",
+      "checkFn": "checkBankStatement",
+      "params": {
+        "minPeriodMonths": 3,
+        "maxAgeDays": 30,
+        "minEurEquivalent": 1500
+      }
+    },
+    {
+      "id": "REQ-SCH-NAME-MATCH",
+      "documentType": "ALL",
+      "severity": "BLOCKER",
+      "description": "Name consistency across passport, flight ticket, hotel voucher, insurance, and bank statement.",
+      "whyRequired": "Name mismatches cause immediate suspicion of document forgery or third-party bookings, leading to refusal.",
+      "checkFn": "checkNameConsistency",
+      "params": {}
+    },
+    {
+      "id": "REQ-SCH-DATE-CONSISTENCY",
+      "documentType": "ALL",
+      "severity": "BLOCKER",
+      "description": "Trip dates must match across flight bookings, hotel reservations, and insurance coverage.",
+      "whyRequired": "Schengen visas are granted strictly for documented travel dates. Discrepancies lead to rejection.",
+      "checkFn": "checkDateConsistency",
+      "params": {}
+    },
+    {
+      "id": "REQ-SCH-EMPLOYMENT-LETTER",
+      "documentType": "EMPLOYMENT_LETTER",
+      "severity": "WARNING",
+      "description": "Employment No Objection Certificate (NOC) issued on official letterhead within the last 30 days with approved leave dates.",
+      "whyRequired": "Demonstrates root ties to country of residence and intent to return upon holiday completion.",
+      "checkFn": "checkEmploymentLetter",
+      "params": {
+        "maxAgeDays": 30
+      }
+    },
+    {
+      "id": "REQ-SCH-PHOTO-QUALITY",
+      "documentType": "PHOTO",
+      "severity": "WARNING",
+      "description": "Biometric photograph meeting ICAO 9303 standards (plain light background, neutral facial expression, no glare).",
+      "whyRequired": "Consulates reject photos with shadows, smiling, or busy backgrounds.",
+      "checkFn": "checkPhotoQuality",
+      "params": {}
+    },
+    {
+      "id": "REQ-SCH-PRIOR-REJECTION",
+      "documentType": "REJECTION_LETTER",
+      "severity": "INFO",
+      "description": "Prior visa rejection declaration check.",
+      "whyRequired": "If you have had a prior visa refusal, it must be openly declared on your application form to prevent SIS II fraud flags.",
+      "checkFn": "checkPriorRejection",
+      "params": {}
+    }
+  ]
+}

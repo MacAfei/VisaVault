@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <pattern id="guilloche" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M0 20 Q 10 5, 20 20 T 40 20" fill="none" stroke="#334155" stroke-width="0.8" opacity="0.3"/>
+      <path d="M0 20 Q 10 35, 20 20 T 40 20" fill="none" stroke="#334155" stroke-width="0.8" opacity="0.3"/>
+    </pattern>
+  </defs>
+
+  <!-- Passport booklet page -->
+  <rect x="20" y="20" width="760" height="480" rx="16" fill="#f8fafc" stroke="#cbd5e1" stroke-width="3"/>
+  <rect x="30" y="30" width="740" height="460" rx="12" fill="url(#guilloche)"/>
+
+  <!-- Header -->
+  <text x="400" y="70" font-family="Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="#0f172a" letter-spacing="4">PASSPORT / PASSEPORT</text>
+  <text x="400" y="95" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#475569">REPUBLIC OF UTOPIA</text>
+
+  <!-- Photo Box -->
+  <rect x="60" y="120" width="180" height="230" rx="8" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2"/>
+  <circle cx="150" cy="190" r="45" fill="#94a3b8"/>
+  <path d="M90 320 Q 150 250, 210 320 Z" fill="#94a3b8"/>
+  <text x="150" y="340" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#64748b">PHOTO SPECIMEN</text>
+
+  <!-- Traveler Details -->
+  <!-- Type / Code / Passport No -->
+  <text x="270" y="140" font-family="Arial, sans-serif" font-size="11" fill="#64748b">Type</text>
+  <text x="270" y="160" font-family="Arial, sans-serif" font-size="15" font-weight="bold" fill="#0f172a">P</text>
+  <text x="350" y="140" font-family="Arial, sans-serif" font-size="11" fill="#64748b">Country Code</text>
+  <text x="350" y="160" font-family="Arial, sans-serif" font-size="15" font-weight="bold" fill="#0f172a">UTO</text>
+  <text x="490" y="140" font-family="Arial, sans-serif" font-size="11" fill="#64748b">Passport No.</text>
+  <text x="490" y="160" font-family="Courier, monospace" font-size="17" font-weight="bold" fill="#0f172a">A87654321</text>
+
+  <!-- Name -->
+  <text x="270" y="195" font-family="Arial, sans-serif" font-size="11" fill="#64748b">Surname / Nom</text>
+  <text x="270" y="215" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#0f172a">SHARMA</text>
+  <text x="270" y="240" font-family="Arial, sans-serif" font-size="11" fill="#64748b">Given Names / Prénoms</text>
+  <text x="270" y="260" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#0f172a">ROHAN ARJUN</text>
+
+  <!-- Nationality & DOB -->
+  <text x="270" y="290" font-family="Arial, sans-serif" font-size="11" fill="#64748b">Nationality</text>
+  <text x="270" y="310" font-family="Arial, sans-serif" font-size="15" font-weight="bold" fill="#0f172a">INDIAN</text>
+  <text x="490" y="290" font-family="Arial, sans-serif" font-size="11" fill="#64748b">Date of Birth</text>
+  <text x="490" y="310" font-family="Arial, sans-serif" font-size="15" font-weight="bold" fill="#0f172a">14 AUG 1992</text>
+
+  <!-- Issue & Expiry -->
+  <text x="270" y="340" font-family="Arial, sans-serif" font-size="11" fill="#64748b">Date of Issue</text>
+  <text x="270" y="360" font-family="Arial, sans-serif" font-size="15" font-weight="bold" fill="#0f172a">10 JAN 2018</text>
+  <text x="490" y="340" font-family="Arial, sans-serif" font-size="11" fill="#64748b">Date of Expiry</text>
+  <text x="490" y="360" font-family="Arial, sans-serif" font-size="15" font-weight="bold" fill="#0f172a">09 JAN 2028</text>
+
+  <!-- Machine Readable Zone (MRZ) -->
+  <rect x="50" y="390" width="700" height="75" rx="6" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="70" y="420" font-family="Courier, monospace" font-size="16" font-weight="bold" fill="#1e293b" letter-spacing="3">P&lt;UTO&lt;&lt;SHARMA&lt;&lt;ROHAN&lt;ARJUN&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</text>
+  <text x="70" y="445" font-family="Courier, monospace" font-size="16" font-weight="bold" fill="#1e293b" letter-spacing="3">A876543214UTO9208148M2801095&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;06</text>
+
+  <!-- SAMPLE WATERMARK -->
+  <text x="400" y="280" font-family="Impact, sans-serif" font-size="90" font-weight="bold" text-anchor="middle" fill="#dc2626" opacity="0.18" transform="rotate(-25 400 280)">SPECIMEN / SAMPLE</text>
+</svg>

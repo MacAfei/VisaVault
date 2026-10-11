@@ -1,0 +1,68 @@
+{
+  "destination": "United Kingdom",
+  "region": "UK",
+  "lastReviewed": "2026-03-20",
+  "sourceComment": "Based on UK Visas and Immigration (UKVI) Standard Visitor guidance. Consular rules change periodically and must always be cross-verified with official GOV.UK sources.",
+  "requiredDocumentTypes": [
+    "PASSPORT",
+    "BANK_STATEMENT",
+    "EMPLOYMENT_LETTER",
+    "HOTEL_BOOKING",
+    "FLIGHT_BOOKING"
+  ],
+  "requirements": [
+    {
+      "id": "REQ-UK-PASSPORT-VALIDITY",
+      "documentType": "PASSPORT",
+      "severity": "BLOCKER",
+      "description": "Passport must be valid for the entire duration of your stay in the UK with at least 1 blank page.",
+      "whyRequired": "UKVI requires a valid travel document for the whole visit plus clearance for entry and departure.",
+      "checkFn": "checkPassportValidityGeneral",
+      "params": {
+        "warnIfUnderMonths": 6
+      }
+    },
+    {
+      "id": "REQ-UK-BANK-STATEMENT",
+      "documentType": "BANK_STATEMENT",
+      "severity": "BLOCKER",
+      "description": "6 months or 3 months bank statements showing genuine origin of funds and disposable income.",
+      "whyRequired": "UKVI heavily scrutinizes sudden unexplained deposits or insufficient living allowance.",
+      "checkFn": "checkBankStatement",
+      "params": {
+        "minPeriodMonths": 3,
+        "maxAgeDays": 30,
+        "minEurEquivalent": 2000
+      }
+    },
+    {
+      "id": "REQ-UK-NAME-MATCH",
+      "documentType": "ALL",
+      "severity": "BLOCKER",
+      "description": "Name alignment across all supporting evidence.",
+      "whyRequired": "Discrepancies require legal name change affidavits or cause immediate visa refusal.",
+      "checkFn": "checkNameConsistency",
+      "params": {}
+    },
+    {
+      "id": "REQ-UK-EMPLOYMENT-LETTER",
+      "documentType": "EMPLOYMENT_LETTER",
+      "severity": "BLOCKER",
+      "description": "Detailed employer letter confirming role, salary, length of service, and authorized holiday.",
+      "whyRequired": "Primary proof that the applicant has strong economic roots and will not overstay in the UK.",
+      "checkFn": "checkEmploymentLetter",
+      "params": {
+        "maxAgeDays": 30
+      }
+    },
+    {
+      "id": "REQ-UK-PRIOR-REJECTION",
+      "documentType": "REJECTION_LETTER",
+      "severity": "INFO",
+      "description": "Declaration of past UK or overseas visa refusals.",
+      "whyRequired": "Failing to disclose a prior visa refusal triggers UK immigration rule 320(7A) - 10 year mandatory ban for deception.",
+      "checkFn": "checkPriorRejection",
+      "params": {}
+    }
+  ]
+}

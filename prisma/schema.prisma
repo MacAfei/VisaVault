@@ -1,0 +1,150 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id        String     @id @default(cuid())
+  name      String
+  email     String     @unique
+  role      String     @default("traveler")
+  travelers Traveler[]
+  trips     Trip[]
+  createdAt DateTime   @default(now())
+}
+
+model Traveler {
+  id                  String         @id @default(cuid())
+  userId              String
+  user                User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  fullName            String
+  dateOfBirth         String         // YYYY-MM-DD
+  nationality         String         // e.g. IND, USA, PHL
+  countryOfResidence  String         // e.g. UAE, GBR
+  documents           Document[]
+  visas               Visa[]
+  travelRecords       TravelRecord[]
+  createdAt           DateTime       @default(now())
+}
+
+model Document {
+  id              String      @id @default(cuid())
+  travelerId      String
+  traveler        Traveler    @relation(fields: [travelerId], references: [id], onDelete: Cascade)
+  type            String      // PASSPORT, VISA, RESIDENCE_PERMIT, etc.
+  fileUrl         String
+  extractedData   String      // JSON string
+  confidenceNotes String?
+  userEdited      Boolean     @default(false)
+  version         Int         @default(1)
+  supersededById  String?
+  supersededBy    Document?   @relation("DocVersions", fields: [supersededById], references: [id])
+  supersededDocs  Document[]  @relation("DocVersions")
+  visa            Visa?
+  createdAt       DateTime    @default(now())
+}
+
+model Visa {
+  id                 String    @id @default(cuid())
+  documentId         String    @unique
+  document           Document  @relation(fields: [documentId], references: [id], onDelete: Cascade)
+  travelerId         String
+  traveler           Traveler  @relation(fields: [travelerId], references: [id], onDelete: Cascade)
+  passportDocumentId String?
+  country            String    // e.g. FRANCE, SCHENGEN, USA, UK, JAPAN
+  region             String    // SCHENGEN, UK, USA, JAPAN
+  visaType           String    // TOURIST, BUSINESS, etc.
+  entries            String    // SINGLE, DOUBLE, MULTIPLE
+  validFrom          String    // YYYY-MM-DD
+  validUntil         String    // YYYY-MM-DD
+  maxStayDays        Int
+  stayWindowDays     Int?      // e.g. 180
+  status             String    @default("ACTIVE") // ACTIVE, EXPIRED, EXHAUSTED
+  createdAt          DateTime  @default(now())
+}
+
+model TravelRecord {
+  id         String    @id @default(cuid())
+  travelerId String
+  traveler   Traveler  @relation(fields: [travelerId], references: [id], onDelete: Cascade)
+  region     String    // e.g. SCHENGEN
+  entryDate  String    // YYYY-MM-DD
+  exitDate   String?   // YYYY-MM-DD
+  notes      String?
+  createdAt  DateTime  @default(now())
+}
+
+model Trip {
+  id               String            @id @default(cuid())
+  userId           String
+  user             User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  destination      String            // e.g. France, United Kingdom, USA, Japan
+  region           String            // SCHENGEN, UK, USA, JAPAN
+  purpose          String            // TOURISM, BUSINESS, etc.
+  startDate        String            // YYYY-MM-DD
+  endDate          String            // YYYY-MM-DD
+  travelerIds      String            // JSON string array e.g. ["travelerId"]
+  status           String            @default("PLANNING")
+  readinessResults ReadinessResult[]
+  cases            Case[]
+  createdAt        DateTime          @default(now())
+}
+
+model ReadinessResult {
+  id          String   @id @default(cuid())
+  tripId      String
+  trip        Trip     @relation(fields: [tripId], references: [id], onDelete: Cascade)
+  verdict     String   // READY, ALMOST_READY, NEEDS_ACTION, BLOCKED
+  score       Int      // 0 - 100
+  itemsJson   String   // JSON string of checklist & action plan
+  generatedAt DateTime @default(now())
+}
+
+model Case {
+  id                 String              @id @default(cuid())
+  caseCode           String              @unique // VV-2026-0042
+  tripId             String
+  trip               Trip                @relation(fields: [tripId], references: [id], onDelete: Cascade)
+  status             String              @default("NEW") // NEW, NEEDS_FIXES, READY_TO_SUBMIT, SUBMITTED
+  consentAcceptedAt  DateTime
+  consentTextVersion String              // v1.0
+  sharedDocumentIds  String              // JSON string array
+  caseIssues         CaseIssue[]
+  messages           CaseMessage[]
+  statusHistory      CaseStatusHistory[]
+  createdAt          DateTime            @default(now())
+}
+
+model CaseIssue {
+  id                  String   @id @default(cuid())
+  caseId              String
+  case                Case     @relation(fields: [caseId], references: [id], onDelete: Cascade)
+  severity            String   // BLOCKER, WARNING, INFO
+  ruleId              String
+  message             String
+  fixSuggestion       String
+  acknowledgedByAgent Boolean  @default(false)
+  agentNote           String?
+  createdAt           DateTime @default(now())
+}
+
+model CaseMessage {
+  id        String   @id @default(cuid())
+  caseId    String
+  case      Case     @relation(fields: [caseId], references: [id], onDelete: Cascade)
+  from      String   // AGENCY, TRAVELER
+  text      String
+  createdAt DateTime @default(now())
+}
+
+model CaseStatusHistory {
+  id        String   @id @default(cuid())
+  caseId    String
+  case      Case     @relation(fields: [caseId], references: [id], onDelete: Cascade)
+  status    String
+  at        DateTime @default(now())
+}

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520" width="100%" height="100%">
+  <rect x="20" y="20" width="760" height="480" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+  <rect x="20" y="20" width="760" height="70" rx="12" fill="#1e293b"/>
+  <text x="50" y="62" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#ffffff">CLOUDTECH MIDDLE EAST FZ-LLC</text>
+  <text x="730" y="62" font-family="Arial, sans-serif" font-size="12" text-anchor="end" fill="#94a3b8">DUBAI INTERNET CITY, UAE</text>
+
+  <text x="50" y="125" font-family="Arial, sans-serif" font-size="12" fill="#64748b">DATE: 2026-05-02</text>
+  <text x="50" y="150" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#0f172a">TO: THE VISA SECTION / EMBASSY OF FRANCE, DUBAI</text>
+
+  <text x="50" y="185" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#0f172a">SUBJECT: NO OBJECTION CERTIFICATE &amp; EMPLOYMENT CONFIRMATION</text>
+
+  <text x="50" y="225" font-family="Arial, sans-serif" font-size="13" fill="#334155" line-height="1.5">
+    This is to certify that Mr. Rohan Arjun Sharma (Passport No: A87654321) has been employed with
+  </text>
+  <text x="50" y="250" font-family="Arial, sans-serif" font-size="13" fill="#334155">
+    CloudTech Middle East FZ-LLC since 15th January 2021 as a Senior Solutions Architect.
+  </text>
+  <text x="50" y="275" font-family="Arial, sans-serif" font-size="13" fill="#334155">
+    His monthly gross salary is AED 24,500. He has been granted approved annual leave from
+  </text>
+  <text x="50" y="300" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#0f172a">
+    2026-06-01 to 2026-06-15 for personal tourism in France and the Schengen Area.
+  </text>
+  <text x="50" y="335" font-family="Arial, sans-serif" font-size="13" fill="#334155">
+    We confirm he will resume his duties upon return. We have no objection to his travel.
+  </text>
+
+  <text x="50" y="420" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#0f172a">Sarah Jenkins, Head of Human Resources</text>
+  <text x="50" y="440" font-family="Arial, sans-serif" font-size="11" fill="#64748b">CloudTech Middle East | hr@cloudtech-me.com | +971 4 390 0000</text>
+
+  <text x="400" y="290" font-family="Impact, sans-serif" font-size="80" text-anchor="middle" fill="#dc2626" opacity="0.14" transform="rotate(-20 400 290)">SAMPLE NOC LETTER</text>
+</svg>

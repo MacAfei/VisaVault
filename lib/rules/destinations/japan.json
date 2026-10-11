@@ -1,0 +1,67 @@
+{
+  "destination": "Japan",
+  "region": "JAPAN",
+  "lastReviewed": "2026-03-01",
+  "sourceComment": "Based on Ministry of Foreign Affairs of Japan (MOFA) Short-Term Tourism criteria. Consular rules change periodically and must always be cross-verified with official MOFA sources.",
+  "requiredDocumentTypes": [
+    "PASSPORT",
+    "PHOTO",
+    "FLIGHT_BOOKING",
+    "HOTEL_BOOKING",
+    "BANK_STATEMENT",
+    "EMPLOYMENT_LETTER"
+  ],
+  "requirements": [
+    {
+      "id": "REQ-JP-PASSPORT-VALIDITY",
+      "documentType": "PASSPORT",
+      "severity": "BLOCKER",
+      "description": "Passport must be valid for the entire duration of stay in Japan.",
+      "whyRequired": "MOFA requires travel document validity covering all declared days in Japan.",
+      "checkFn": "checkPassportValidityGeneral",
+      "params": {
+        "warnIfUnderMonths": 6
+      }
+    },
+    {
+      "id": "REQ-JP-BANK-STATEMENT",
+      "documentType": "BANK_STATEMENT",
+      "severity": "BLOCKER",
+      "description": "Bank balance certificate or 3-month statement showing adequate funds (approx. 100,000 JPY per week of stay).",
+      "whyRequired": "Demonstrates ability to pay all travel, accommodation, and living costs in Japan.",
+      "checkFn": "checkBankStatement",
+      "params": {
+        "minPeriodMonths": 3,
+        "maxAgeDays": 30,
+        "minEurEquivalent": 1500
+      }
+    },
+    {
+      "id": "REQ-JP-ITINERARY-CONSISTENCY",
+      "documentType": "ALL",
+      "severity": "BLOCKER",
+      "description": "Daily schedule of stay (Schedule of Stay) aligning with confirmed flights and hotel bookings.",
+      "whyRequired": "Japanese consulates require daily planned activity sheets with hotel addresses and telephone numbers.",
+      "checkFn": "checkDateConsistency",
+      "params": {}
+    },
+    {
+      "id": "REQ-JP-NAME-MATCH",
+      "documentType": "ALL",
+      "severity": "BLOCKER",
+      "description": "Names across hotel vouchers and airline tickets must match passport spelling precisely.",
+      "whyRequired": "Japan Immigration enforces strict passenger manifest cross-checks.",
+      "checkFn": "checkNameConsistency",
+      "params": {}
+    },
+    {
+      "id": "REQ-JP-PHOTO-QUALITY",
+      "documentType": "PHOTO",
+      "severity": "BLOCKER",
+      "description": "45mm x 35mm photograph taken within the last 6 months against a plain white background.",
+      "whyRequired": "Strict adherence to Japanese consular dimensions; glossy finish required.",
+      "checkFn": "checkPhotoQuality",
+      "params": {}
+    }
+  ]
+}

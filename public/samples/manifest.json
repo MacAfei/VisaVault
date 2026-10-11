@@ -1,0 +1,975 @@
+{
+  "baseDate": "2026-10-11",
+  "generatedAt": "2026-10-11T04:04:47.147547",
+  "disclaimer": "All files in this directory are 100% fictional demo artifacts created for software testing and evaluation. Every document carries a prominent watermark and must never be used for real visa applications.",
+  "travelers": [
+    {
+      "name": "Aarav Example",
+      "slug": "aarav-example",
+      "scenario": "Visa fully covers the trip (good to go)",
+      "expectedOutcome": "READY: Existing Schengen multiple-entry visa fully covers trip dates (stay 10 days; 12 prior + 10 = 22/90 days used; passport & insurance valid; all documents verified).",
+      "plannedTrip": {
+        "destination": "France (Schengen)",
+        "startDate": "2026-11-10",
+        "endDate": "2026-11-20"
+      },
+      "travelRecords": [
+        {
+          "country": "France",
+          "entryDate": "2026-07-13",
+          "exitDate": "2026-07-25",
+          "days": 12
+        }
+      ],
+      "documents": [
+        {
+          "person": "Aarav Example",
+          "personSlug": "aarav-example",
+          "filePath": "samples/aarav-example/passport.pdf",
+          "fileName": "passport.pdf",
+          "documentType": "PASSPORT",
+          "extracted": {
+            "fullName": "Aarav Example",
+            "passportNumber": "XX0000101",
+            "nationality": "Sampleland",
+            "dateOfBirth": "1988-04-15",
+            "issueDate": "2023-10-11",
+            "expiryDate": "2032-10-11",
+            "issuingCountry": "Sampleland"
+          }
+        },
+        {
+          "person": "Aarav Example",
+          "personSlug": "aarav-example",
+          "filePath": "samples/aarav-example/visa.pdf",
+          "fileName": "visa.pdf",
+          "documentType": "VISA",
+          "extracted": {
+            "holderName": "Aarav Example",
+            "passportNumber": "XX0000101",
+            "country": "France",
+            "region": "Schengen",
+            "visaType": "C - TOURIST (SHORT STAY)",
+            "entries": "MULT",
+            "validFrom": "2026-08-12",
+            "validUntil": "2027-08-07",
+            "maxStayDays": 90,
+            "referenceNumber": "VS99000101"
+          }
+        },
+        {
+          "person": "Aarav Example",
+          "personSlug": "aarav-example",
+          "filePath": "samples/aarav-example/residence-permit.png",
+          "fileName": "residence-permit.png",
+          "documentType": "RESIDENCE_PERMIT",
+          "extracted": {
+            "holderName": "Aarav Example",
+            "idNumber": "784-1988-0000101-1",
+            "issuingCountry": "United Arab Emirates",
+            "expiryDate": "2027-12-11",
+            "sponsorOrEmployer": "Sample Global Tech LLC"
+          }
+        },
+        {
+          "person": "Aarav Example",
+          "personSlug": "aarav-example",
+          "filePath": "samples/aarav-example/bank-statement.pdf",
+          "fileName": "bank-statement.pdf",
+          "documentType": "BANK_STATEMENT",
+          "extracted": {
+            "accountHolderName": "Aarav Example",
+            "periodStart": "2026-07-06",
+            "periodEnd": "2026-10-04",
+            "closingBalance": 42500.0,
+            "currency": "AED"
+          }
+        },
+        {
+          "person": "Aarav Example",
+          "personSlug": "aarav-example",
+          "filePath": "samples/aarav-example/insurance.pdf",
+          "fileName": "insurance.pdf",
+          "documentType": "INSURANCE",
+          "extracted": {
+            "holderName": "Aarav Example",
+            "coverageAmount": 50000,
+            "currency": "EUR",
+            "startDate": "2026-11-10",
+            "endDate": "2026-11-20",
+            "coveredRegions": "Schengen States"
+          }
+        },
+        {
+          "person": "Aarav Example",
+          "personSlug": "aarav-example",
+          "filePath": "samples/aarav-example/flight.pdf",
+          "fileName": "flight.pdf",
+          "documentType": "FLIGHT_BOOKING",
+          "extracted": {
+            "passengerName": "Aarav Example",
+            "departureDate": "2026-11-10",
+            "returnDate": "2026-11-20",
+            "route": "DXB -> CDG -> DXB"
+          }
+        },
+        {
+          "person": "Aarav Example",
+          "personSlug": "aarav-example",
+          "filePath": "samples/aarav-example/hotel.pdf",
+          "fileName": "hotel.pdf",
+          "documentType": "HOTEL_BOOKING",
+          "extracted": {
+            "guestName": "Aarav Example",
+            "checkIn": "2026-11-10",
+            "checkOut": "2026-11-20",
+            "city": "Paris"
+          }
+        },
+        {
+          "person": "Aarav Example",
+          "personSlug": "aarav-example",
+          "filePath": "samples/aarav-example/employment-letter.pdf",
+          "fileName": "employment-letter.pdf",
+          "documentType": "EMPLOYMENT_LETTER",
+          "extracted": {
+            "employeeName": "Aarav Example",
+            "employer": "Sample Global Tech LLC",
+            "position": "Senior Software Architect",
+            "issueDate": "2026-10-01",
+            "leaveStart": "2026-11-10",
+            "leaveEnd": "2026-11-20"
+          }
+        },
+        {
+          "person": "Aarav Example",
+          "personSlug": "aarav-example",
+          "filePath": "samples/aarav-example/photo.png",
+          "fileName": "photo.png",
+          "documentType": "PHOTO",
+          "extracted": {
+            "qualityNotes": "Compliant neutral silhouette, standard 35x45mm format, light plain background"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Meera Sample",
+      "slug": "meera-sample",
+      "scenario": "Visa valid but problems (partially covered)",
+      "expectedOutcome": "PARTIAL / BLOCKED: Passport expires too soon (expires in 75 days, less than 3 months beyond trip return date); Schengen 90/180 stay limit exceeded (78 past days + 20 planned days = 98 days in 180-day window).",
+      "plannedTrip": {
+        "destination": "Germany (Schengen)",
+        "startDate": "2026-10-31",
+        "endDate": "2026-11-20"
+      },
+      "travelRecords": [
+        {
+          "country": "Germany",
+          "entryDate": "2026-07-13",
+          "exitDate": "2026-09-29",
+          "days": 78
+        }
+      ],
+      "documents": [
+        {
+          "person": "Meera Sample",
+          "personSlug": "meera-sample",
+          "filePath": "samples/meera-sample/passport.png",
+          "fileName": "passport.png",
+          "documentType": "PASSPORT",
+          "extracted": {
+            "fullName": "Meera Sample",
+            "passportNumber": "XX0000202",
+            "nationality": "Sampleland",
+            "dateOfBirth": "1992-08-22",
+            "issueDate": "2016-12-25",
+            "expiryDate": "2026-12-25",
+            "issuingCountry": "Sampleland"
+          }
+        },
+        {
+          "person": "Meera Sample",
+          "personSlug": "meera-sample",
+          "filePath": "samples/meera-sample/visa.pdf",
+          "fileName": "visa.pdf",
+          "documentType": "VISA",
+          "extracted": {
+            "holderName": "Meera Sample",
+            "passportNumber": "XX0000202",
+            "country": "Germany",
+            "region": "Schengen",
+            "visaType": "C - TOURIST (SHORT STAY)",
+            "entries": "MULT",
+            "validFrom": "2026-07-03",
+            "validUntil": "2027-04-29",
+            "maxStayDays": 90,
+            "referenceNumber": "VS99000202"
+          }
+        },
+        {
+          "person": "Meera Sample",
+          "personSlug": "meera-sample",
+          "filePath": "samples/meera-sample/residence-permit.pdf",
+          "fileName": "residence-permit.pdf",
+          "documentType": "RESIDENCE_PERMIT",
+          "extracted": {
+            "holderName": "Meera Sample",
+            "idNumber": "784-1992-0000202-3",
+            "issuingCountry": "United Arab Emirates",
+            "expiryDate": "2027-08-11",
+            "sponsorOrEmployer": "Sample Retail Horizons FZCO"
+          }
+        },
+        {
+          "person": "Meera Sample",
+          "personSlug": "meera-sample",
+          "filePath": "samples/meera-sample/bank-statement.pdf",
+          "fileName": "bank-statement.pdf",
+          "documentType": "BANK_STATEMENT",
+          "extracted": {
+            "accountHolderName": "Meera Sample",
+            "periodStart": "2026-07-08",
+            "periodEnd": "2026-10-06",
+            "closingBalance": 31800.0,
+            "currency": "AED"
+          }
+        },
+        {
+          "person": "Meera Sample",
+          "personSlug": "meera-sample",
+          "filePath": "samples/meera-sample/insurance.pdf",
+          "fileName": "insurance.pdf",
+          "documentType": "INSURANCE",
+          "extracted": {
+            "holderName": "Meera Sample",
+            "coverageAmount": 40000,
+            "currency": "EUR",
+            "startDate": "2026-10-31",
+            "endDate": "2026-11-20",
+            "coveredRegions": "Schengen States"
+          }
+        },
+        {
+          "person": "Meera Sample",
+          "personSlug": "meera-sample",
+          "filePath": "samples/meera-sample/flight.pdf",
+          "fileName": "flight.pdf",
+          "documentType": "FLIGHT_BOOKING",
+          "extracted": {
+            "passengerName": "Meera Sample",
+            "departureDate": "2026-10-31",
+            "returnDate": "2026-11-20",
+            "route": "DXB -> FRA -> DXB"
+          }
+        },
+        {
+          "person": "Meera Sample",
+          "personSlug": "meera-sample",
+          "filePath": "samples/meera-sample/hotel.pdf",
+          "fileName": "hotel.pdf",
+          "documentType": "HOTEL_BOOKING",
+          "extracted": {
+            "guestName": "Meera Sample",
+            "checkIn": "2026-10-31",
+            "checkOut": "2026-11-20",
+            "city": "Frankfurt"
+          }
+        },
+        {
+          "person": "Meera Sample",
+          "personSlug": "meera-sample",
+          "filePath": "samples/meera-sample/employment-letter.pdf",
+          "fileName": "employment-letter.pdf",
+          "documentType": "EMPLOYMENT_LETTER",
+          "extracted": {
+            "employeeName": "Meera Sample",
+            "employer": "Sample Retail Horizons FZCO",
+            "position": "Marketing Lead",
+            "issueDate": "2026-09-29",
+            "leaveStart": "2026-10-31",
+            "leaveEnd": "2026-11-20"
+          }
+        },
+        {
+          "person": "Meera Sample",
+          "personSlug": "meera-sample",
+          "filePath": "samples/meera-sample/photo.png",
+          "fileName": "photo.png",
+          "documentType": "PHOTO",
+          "extracted": {
+            "qualityNotes": "Compliant neutral silhouette, standard 35x45mm format, light plain background"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Rohan Demo",
+      "slug": "rohan-demo",
+      "scenario": "No visa, missing documents, new application",
+      "expectedOutcome": "NEW APPLICATION REQUIRED: No valid Schengen visa found. Missing mandatory travel insurance policy. Missing employer leave letter. Stale bank statement (ending 55 days ago; exceeds 30-day freshness rule).",
+      "plannedTrip": {
+        "destination": "Netherlands (Schengen)",
+        "startDate": "2026-11-25",
+        "endDate": "2026-12-05"
+      },
+      "travelRecords": [],
+      "documents": [
+        {
+          "person": "Rohan Demo",
+          "personSlug": "rohan-demo",
+          "filePath": "samples/rohan-demo/passport.pdf",
+          "fileName": "passport.pdf",
+          "documentType": "PASSPORT",
+          "extracted": {
+            "fullName": "Rohan Demo",
+            "passportNumber": "XX0000303",
+            "nationality": "Sampleland",
+            "dateOfBirth": "1995-11-04",
+            "issueDate": "2024-10-11",
+            "expiryDate": "2034-10-11",
+            "issuingCountry": "Sampleland"
+          }
+        },
+        {
+          "person": "Rohan Demo",
+          "personSlug": "rohan-demo",
+          "filePath": "samples/rohan-demo/residence-permit.png",
+          "fileName": "residence-permit.png",
+          "documentType": "RESIDENCE_PERMIT",
+          "extracted": {
+            "holderName": "Rohan Demo",
+            "idNumber": "784-1995-0000303-7",
+            "issuingCountry": "United Arab Emirates",
+            "expiryDate": "2028-04-11",
+            "sponsorOrEmployer": "Demo Creative Media LLC"
+          }
+        },
+        {
+          "person": "Rohan Demo",
+          "personSlug": "rohan-demo",
+          "filePath": "samples/rohan-demo/bank-statement.pdf",
+          "fileName": "bank-statement.pdf",
+          "documentType": "BANK_STATEMENT",
+          "extracted": {
+            "accountHolderName": "Rohan Demo",
+            "periodStart": "2026-05-19",
+            "periodEnd": "2026-08-17",
+            "closingBalance": 18500.0,
+            "currency": "AED"
+          }
+        },
+        {
+          "person": "Rohan Demo",
+          "personSlug": "rohan-demo",
+          "filePath": "samples/rohan-demo/flight.pdf",
+          "fileName": "flight.pdf",
+          "documentType": "FLIGHT_BOOKING",
+          "extracted": {
+            "passengerName": "Rohan Demo",
+            "departureDate": "2026-11-25",
+            "returnDate": "2026-12-05",
+            "route": "DXB -> AMS -> DXB"
+          }
+        },
+        {
+          "person": "Rohan Demo",
+          "personSlug": "rohan-demo",
+          "filePath": "samples/rohan-demo/hotel.pdf",
+          "fileName": "hotel.pdf",
+          "documentType": "HOTEL_BOOKING",
+          "extracted": {
+            "guestName": "Rohan Demo",
+            "checkIn": "2026-11-25",
+            "checkOut": "2026-12-05",
+            "city": "Amsterdam"
+          }
+        },
+        {
+          "person": "Rohan Demo",
+          "personSlug": "rohan-demo",
+          "filePath": "samples/rohan-demo/photo.png",
+          "fileName": "photo.png",
+          "documentType": "PHOTO",
+          "extracted": {
+            "qualityNotes": "Compliant neutral silhouette, standard 35x45mm format, light plain background"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Sana Testcase",
+      "slug": "sana-testcase",
+      "scenario": "Inconsistency problems",
+      "expectedOutcome": "ACTION REQUIRED / CRITICAL INCONSISTENCIES: Name mismatch on hotel voucher ('SANNA TEST-CASE' vs passport 'SANA TESTCASE'); Hotel booking does not cover full stay (check-out 2026-11-24 vs flight return 2026-11-27, missing 3 nights); Travel insurance coverage EUR 20,000 is below EUR 30,000 Schengen minimum requirement; Bank statement balance indicates insufficient subsistence funds.",
+      "plannedTrip": {
+        "destination": "Italy (Schengen)",
+        "startDate": "2026-11-15",
+        "endDate": "2026-11-27"
+      },
+      "travelRecords": [],
+      "documents": [
+        {
+          "person": "Sana Testcase",
+          "personSlug": "sana-testcase",
+          "filePath": "samples/sana-testcase/passport.pdf",
+          "fileName": "passport.pdf",
+          "documentType": "PASSPORT",
+          "extracted": {
+            "fullName": "Sana Testcase",
+            "passportNumber": "XX0000404",
+            "nationality": "Sampleland",
+            "dateOfBirth": "1997-03-19",
+            "issueDate": "2025-10-11",
+            "expiryDate": "2030-10-11",
+            "issuingCountry": "Sampleland"
+          }
+        },
+        {
+          "person": "Sana Testcase",
+          "personSlug": "sana-testcase",
+          "filePath": "samples/sana-testcase/residence-permit.pdf",
+          "fileName": "residence-permit.pdf",
+          "documentType": "RESIDENCE_PERMIT",
+          "extracted": {
+            "holderName": "Sana Testcase",
+            "idNumber": "784-1997-0000404-5",
+            "issuingCountry": "United Arab Emirates",
+            "expiryDate": "2027-10-11",
+            "sponsorOrEmployer": "Testcase Logistics Corp"
+          }
+        },
+        {
+          "person": "Sana Testcase",
+          "personSlug": "sana-testcase",
+          "filePath": "samples/sana-testcase/bank-statement.pdf",
+          "fileName": "bank-statement.pdf",
+          "documentType": "BANK_STATEMENT",
+          "extracted": {
+            "accountHolderName": "Sana Testcase",
+            "periodStart": "2026-07-10",
+            "periodEnd": "2026-10-08",
+            "closingBalance": 450.0,
+            "currency": "AED"
+          }
+        },
+        {
+          "person": "Sana Testcase",
+          "personSlug": "sana-testcase",
+          "filePath": "samples/sana-testcase/flight.pdf",
+          "fileName": "flight.pdf",
+          "documentType": "FLIGHT_BOOKING",
+          "extracted": {
+            "passengerName": "Sana Testcase",
+            "departureDate": "2026-11-15",
+            "returnDate": "2026-11-27",
+            "route": "DXB -> FCO -> DXB"
+          }
+        },
+        {
+          "person": "Sana Testcase",
+          "personSlug": "sana-testcase",
+          "filePath": "samples/sana-testcase/hotel.png",
+          "fileName": "hotel.png",
+          "documentType": "HOTEL_BOOKING",
+          "extracted": {
+            "guestName": "Sanna Test-Case",
+            "checkIn": "2026-11-15",
+            "checkOut": "2026-11-24",
+            "city": "Rome"
+          }
+        },
+        {
+          "person": "Sana Testcase",
+          "personSlug": "sana-testcase",
+          "filePath": "samples/sana-testcase/insurance.pdf",
+          "fileName": "insurance.pdf",
+          "documentType": "INSURANCE",
+          "extracted": {
+            "holderName": "Sana Testcase",
+            "coverageAmount": 20000,
+            "currency": "EUR",
+            "startDate": "2026-11-15",
+            "endDate": "2026-11-27",
+            "coveredRegions": "Schengen States"
+          }
+        },
+        {
+          "person": "Sana Testcase",
+          "personSlug": "sana-testcase",
+          "filePath": "samples/sana-testcase/employment-letter.pdf",
+          "fileName": "employment-letter.pdf",
+          "documentType": "EMPLOYMENT_LETTER",
+          "extracted": {
+            "employeeName": "Sana Testcase",
+            "employer": "Testcase Logistics Corp",
+            "position": "Operations Analyst",
+            "issueDate": "2026-10-03",
+            "leaveStart": "2026-11-15",
+            "leaveEnd": "2026-11-27"
+          }
+        },
+        {
+          "person": "Sana Testcase",
+          "personSlug": "sana-testcase",
+          "filePath": "samples/sana-testcase/photo.png",
+          "fileName": "photo.png",
+          "documentType": "PHOTO",
+          "extracted": {
+            "qualityNotes": "Compliant neutral silhouette, standard 35x45mm format, light plain background"
+          }
+        }
+      ]
+    }
+  ],
+  "documents": [
+    {
+      "person": "Aarav Example",
+      "personSlug": "aarav-example",
+      "filePath": "samples/aarav-example/passport.pdf",
+      "fileName": "passport.pdf",
+      "documentType": "PASSPORT",
+      "extracted": {
+        "fullName": "Aarav Example",
+        "passportNumber": "XX0000101",
+        "nationality": "Sampleland",
+        "dateOfBirth": "1988-04-15",
+        "issueDate": "2023-10-11",
+        "expiryDate": "2032-10-11",
+        "issuingCountry": "Sampleland"
+      }
+    },
+    {
+      "person": "Aarav Example",
+      "personSlug": "aarav-example",
+      "filePath": "samples/aarav-example/visa.pdf",
+      "fileName": "visa.pdf",
+      "documentType": "VISA",
+      "extracted": {
+        "holderName": "Aarav Example",
+        "passportNumber": "XX0000101",
+        "country": "France",
+        "region": "Schengen",
+        "visaType": "C - TOURIST (SHORT STAY)",
+        "entries": "MULT",
+        "validFrom": "2026-08-12",
+        "validUntil": "2027-08-07",
+        "maxStayDays": 90,
+        "referenceNumber": "VS99000101"
+      }
+    },
+    {
+      "person": "Aarav Example",
+      "personSlug": "aarav-example",
+      "filePath": "samples/aarav-example/residence-permit.png",
+      "fileName": "residence-permit.png",
+      "documentType": "RESIDENCE_PERMIT",
+      "extracted": {
+        "holderName": "Aarav Example",
+        "idNumber": "784-1988-0000101-1",
+        "issuingCountry": "United Arab Emirates",
+        "expiryDate": "2027-12-11",
+        "sponsorOrEmployer": "Sample Global Tech LLC"
+      }
+    },
+    {
+      "person": "Aarav Example",
+      "personSlug": "aarav-example",
+      "filePath": "samples/aarav-example/bank-statement.pdf",
+      "fileName": "bank-statement.pdf",
+      "documentType": "BANK_STATEMENT",
+      "extracted": {
+        "accountHolderName": "Aarav Example",
+        "periodStart": "2026-07-06",
+        "periodEnd": "2026-10-04",
+        "closingBalance": 42500.0,
+        "currency": "AED"
+      }
+    },
+    {
+      "person": "Aarav Example",
+      "personSlug": "aarav-example",
+      "filePath": "samples/aarav-example/insurance.pdf",
+      "fileName": "insurance.pdf",
+      "documentType": "INSURANCE",
+      "extracted": {
+        "holderName": "Aarav Example",
+        "coverageAmount": 50000,
+        "currency": "EUR",
+        "startDate": "2026-11-10",
+        "endDate": "2026-11-20",
+        "coveredRegions": "Schengen States"
+      }
+    },
+    {
+      "person": "Aarav Example",
+      "personSlug": "aarav-example",
+      "filePath": "samples/aarav-example/flight.pdf",
+      "fileName": "flight.pdf",
+      "documentType": "FLIGHT_BOOKING",
+      "extracted": {
+        "passengerName": "Aarav Example",
+        "departureDate": "2026-11-10",
+        "returnDate": "2026-11-20",
+        "route": "DXB -> CDG -> DXB"
+      }
+    },
+    {
+      "person": "Aarav Example",
+      "personSlug": "aarav-example",
+      "filePath": "samples/aarav-example/hotel.pdf",
+      "fileName": "hotel.pdf",
+      "documentType": "HOTEL_BOOKING",
+      "extracted": {
+        "guestName": "Aarav Example",
+        "checkIn": "2026-11-10",
+        "checkOut": "2026-11-20",
+        "city": "Paris"
+      }
+    },
+    {
+      "person": "Aarav Example",
+      "personSlug": "aarav-example",
+      "filePath": "samples/aarav-example/employment-letter.pdf",
+      "fileName": "employment-letter.pdf",
+      "documentType": "EMPLOYMENT_LETTER",
+      "extracted": {
+        "employeeName": "Aarav Example",
+        "employer": "Sample Global Tech LLC",
+        "position": "Senior Software Architect",
+        "issueDate": "2026-10-01",
+        "leaveStart": "2026-11-10",
+        "leaveEnd": "2026-11-20"
+      }
+    },
+    {
+      "person": "Aarav Example",
+      "personSlug": "aarav-example",
+      "filePath": "samples/aarav-example/photo.png",
+      "fileName": "photo.png",
+      "documentType": "PHOTO",
+      "extracted": {
+        "qualityNotes": "Compliant neutral silhouette, standard 35x45mm format, light plain background"
+      }
+    },
+    {
+      "person": "Meera Sample",
+      "personSlug": "meera-sample",
+      "filePath": "samples/meera-sample/passport.png",
+      "fileName": "passport.png",
+      "documentType": "PASSPORT",
+      "extracted": {
+        "fullName": "Meera Sample",
+        "passportNumber": "XX0000202",
+        "nationality": "Sampleland",
+        "dateOfBirth": "1992-08-22",
+        "issueDate": "2016-12-25",
+        "expiryDate": "2026-12-25",
+        "issuingCountry": "Sampleland"
+      }
+    },
+    {
+      "person": "Meera Sample",
+      "personSlug": "meera-sample",
+      "filePath": "samples/meera-sample/visa.pdf",
+      "fileName": "visa.pdf",
+      "documentType": "VISA",
+      "extracted": {
+        "holderName": "Meera Sample",
+        "passportNumber": "XX0000202",
+        "country": "Germany",
+        "region": "Schengen",
+        "visaType": "C - TOURIST (SHORT STAY)",
+        "entries": "MULT",
+        "validFrom": "2026-07-03",
+        "validUntil": "2027-04-29",
+        "maxStayDays": 90,
+        "referenceNumber": "VS99000202"
+      }
+    },
+    {
+      "person": "Meera Sample",
+      "personSlug": "meera-sample",
+      "filePath": "samples/meera-sample/residence-permit.pdf",
+      "fileName": "residence-permit.pdf",
+      "documentType": "RESIDENCE_PERMIT",
+      "extracted": {
+        "holderName": "Meera Sample",
+        "idNumber": "784-1992-0000202-3",
+        "issuingCountry": "United Arab Emirates",
+        "expiryDate": "2027-08-11",
+        "sponsorOrEmployer": "Sample Retail Horizons FZCO"
+      }
+    },
+    {
+      "person": "Meera Sample",
+      "personSlug": "meera-sample",
+      "filePath": "samples/meera-sample/bank-statement.pdf",
+      "fileName": "bank-statement.pdf",
+      "documentType": "BANK_STATEMENT",
+      "extracted": {
+        "accountHolderName": "Meera Sample",
+        "periodStart": "2026-07-08",
+        "periodEnd": "2026-10-06",
+        "closingBalance": 31800.0,
+        "currency": "AED"
+      }
+    },
+    {
+      "person": "Meera Sample",
+      "personSlug": "meera-sample",
+      "filePath": "samples/meera-sample/insurance.pdf",
+      "fileName": "insurance.pdf",
+      "documentType": "INSURANCE",
+      "extracted": {
+        "holderName": "Meera Sample",
+        "coverageAmount": 40000,
+        "currency": "EUR",
+        "startDate": "2026-10-31",
+        "endDate": "2026-11-20",
+        "coveredRegions": "Schengen States"
+      }
+    },
+    {
+      "person": "Meera Sample",
+      "personSlug": "meera-sample",
+      "filePath": "samples/meera-sample/flight.pdf",
+      "fileName": "flight.pdf",
+      "documentType": "FLIGHT_BOOKING",
+      "extracted": {
+        "passengerName": "Meera Sample",
+        "departureDate": "2026-10-31",
+        "returnDate": "2026-11-20",
+        "route": "DXB -> FRA -> DXB"
+      }
+    },
+    {
+      "person": "Meera Sample",
+      "personSlug": "meera-sample",
+      "filePath": "samples/meera-sample/hotel.pdf",
+      "fileName": "hotel.pdf",
+      "documentType": "HOTEL_BOOKING",
+      "extracted": {
+        "guestName": "Meera Sample",
+        "checkIn": "2026-10-31",
+        "checkOut": "2026-11-20",
+        "city": "Frankfurt"
+      }
+    },
+    {
+      "person": "Meera Sample",
+      "personSlug": "meera-sample",
+      "filePath": "samples/meera-sample/employment-letter.pdf",
+      "fileName": "employment-letter.pdf",
+      "documentType": "EMPLOYMENT_LETTER",
+      "extracted": {
+        "employeeName": "Meera Sample",
+        "employer": "Sample Retail Horizons FZCO",
+        "position": "Marketing Lead",
+        "issueDate": "2026-09-29",
+        "leaveStart": "2026-10-31",
+        "leaveEnd": "2026-11-20"
+      }
+    },
+    {
+      "person": "Meera Sample",
+      "personSlug": "meera-sample",
+      "filePath": "samples/meera-sample/photo.png",
+      "fileName": "photo.png",
+      "documentType": "PHOTO",
+      "extracted": {
+        "qualityNotes": "Compliant neutral silhouette, standard 35x45mm format, light plain background"
+      }
+    },
+    {
+      "person": "Rohan Demo",
+      "personSlug": "rohan-demo",
+      "filePath": "samples/rohan-demo/passport.pdf",
+      "fileName": "passport.pdf",
+      "documentType": "PASSPORT",
+      "extracted": {
+        "fullName": "Rohan Demo",
+        "passportNumber": "XX0000303",
+        "nationality": "Sampleland",
+        "dateOfBirth": "1995-11-04",
+        "issueDate": "2024-10-11",
+        "expiryDate": "2034-10-11",
+        "issuingCountry": "Sampleland"
+      }
+    },
+    {
+      "person": "Rohan Demo",
+      "personSlug": "rohan-demo",
+      "filePath": "samples/rohan-demo/residence-permit.png",
+      "fileName": "residence-permit.png",
+      "documentType": "RESIDENCE_PERMIT",
+      "extracted": {
+        "holderName": "Rohan Demo",
+        "idNumber": "784-1995-0000303-7",
+        "issuingCountry": "United Arab Emirates",
+        "expiryDate": "2028-04-11",
+        "sponsorOrEmployer": "Demo Creative Media LLC"
+      }
+    },
+    {
+      "person": "Rohan Demo",
+      "personSlug": "rohan-demo",
+      "filePath": "samples/rohan-demo/bank-statement.pdf",
+      "fileName": "bank-statement.pdf",
+      "documentType": "BANK_STATEMENT",
+      "extracted": {
+        "accountHolderName": "Rohan Demo",
+        "periodStart": "2026-05-19",
+        "periodEnd": "2026-08-17",
+        "closingBalance": 18500.0,
+        "currency": "AED"
+      }
+    },
+    {
+      "person": "Rohan Demo",
+      "personSlug": "rohan-demo",
+      "filePath": "samples/rohan-demo/flight.pdf",
+      "fileName": "flight.pdf",
+      "documentType": "FLIGHT_BOOKING",
+      "extracted": {
+        "passengerName": "Rohan Demo",
+        "departureDate": "2026-11-25",
+        "returnDate": "2026-12-05",
+        "route": "DXB -> AMS -> DXB"
+      }
+    },
+    {
+      "person": "Rohan Demo",
+      "personSlug": "rohan-demo",
+      "filePath": "samples/rohan-demo/hotel.pdf",
+      "fileName": "hotel.pdf",
+      "documentType": "HOTEL_BOOKING",
+      "extracted": {
+        "guestName": "Rohan Demo",
+        "checkIn": "2026-11-25",
+        "checkOut": "2026-12-05",
+        "city": "Amsterdam"
+      }
+    },
+    {
+      "person": "Rohan Demo",
+      "personSlug": "rohan-demo",
+      "filePath": "samples/rohan-demo/photo.png",
+      "fileName": "photo.png",
+      "documentType": "PHOTO",
+      "extracted": {
+        "qualityNotes": "Compliant neutral silhouette, standard 35x45mm format, light plain background"
+      }
+    },
+    {
+      "person": "Sana Testcase",
+      "personSlug": "sana-testcase",
+      "filePath": "samples/sana-testcase/passport.pdf",
+      "fileName": "passport.pdf",
+      "documentType": "PASSPORT",
+      "extracted": {
+        "fullName": "Sana Testcase",
+        "passportNumber": "XX0000404",
+        "nationality": "Sampleland",
+        "dateOfBirth": "1997-03-19",
+        "issueDate": "2025-10-11",
+        "expiryDate": "2030-10-11",
+        "issuingCountry": "Sampleland"
+      }
+    },
+    {
+      "person": "Sana Testcase",
+      "personSlug": "sana-testcase",
+      "filePath": "samples/sana-testcase/residence-permit.pdf",
+      "fileName": "residence-permit.pdf",
+      "documentType": "RESIDENCE_PERMIT",
+      "extracted": {
+        "holderName": "Sana Testcase",
+        "idNumber": "784-1997-0000404-5",
+        "issuingCountry": "United Arab Emirates",
+        "expiryDate": "2027-10-11",
+        "sponsorOrEmployer": "Testcase Logistics Corp"
+      }
+    },
+    {
+      "person": "Sana Testcase",
+      "personSlug": "sana-testcase",
+      "filePath": "samples/sana-testcase/bank-statement.pdf",
+      "fileName": "bank-statement.pdf",
+      "documentType": "BANK_STATEMENT",
+      "extracted": {
+        "accountHolderName": "Sana Testcase",
+        "periodStart": "2026-07-10",
+        "periodEnd": "2026-10-08",
+        "closingBalance": 450.0,
+        "currency": "AED"
+      }
+    },
+    {
+      "person": "Sana Testcase",
+      "personSlug": "sana-testcase",
+      "filePath": "samples/sana-testcase/flight.pdf",
+      "fileName": "flight.pdf",
+      "documentType": "FLIGHT_BOOKING",
+      "extracted": {
+        "passengerName": "Sana Testcase",
+        "departureDate": "2026-11-15",
+        "returnDate": "2026-11-27",
+        "route": "DXB -> FCO -> DXB"
+      }
+    },
+    {
+      "person": "Sana Testcase",
+      "personSlug": "sana-testcase",
+      "filePath": "samples/sana-testcase/hotel.png",
+      "fileName": "hotel.png",
+      "documentType": "HOTEL_BOOKING",
+      "extracted": {
+        "guestName": "Sanna Test-Case",
+        "checkIn": "2026-11-15",
+        "checkOut": "2026-11-24",
+        "city": "Rome"
+      }
+    },
+    {
+      "person": "Sana Testcase",
+      "personSlug": "sana-testcase",
+      "filePath": "samples/sana-testcase/insurance.pdf",
+      "fileName": "insurance.pdf",
+      "documentType": "INSURANCE",
+      "extracted": {
+        "holderName": "Sana Testcase",
+        "coverageAmount": 20000,
+        "currency": "EUR",
+        "startDate": "2026-11-15",
+        "endDate": "2026-11-27",
+        "coveredRegions": "Schengen States"
+      }
+    },
+    {
+      "person": "Sana Testcase",
+      "personSlug": "sana-testcase",
+      "filePath": "samples/sana-testcase/employment-letter.pdf",
+      "fileName": "employment-letter.pdf",
+      "documentType": "EMPLOYMENT_LETTER",
+      "extracted": {
+        "employeeName": "Sana Testcase",
+        "employer": "Testcase Logistics Corp",
+        "position": "Operations Analyst",
+        "issueDate": "2026-10-03",
+        "leaveStart": "2026-11-15",
+        "leaveEnd": "2026-11-27"
+      }
+    },
+    {
+      "person": "Sana Testcase",
+      "personSlug": "sana-testcase",
+      "filePath": "samples/sana-testcase/photo.png",
+      "fileName": "photo.png",
+      "documentType": "PHOTO",
+      "extracted": {
+        "qualityNotes": "Compliant neutral silhouette, standard 35x45mm format, light plain background"
+      }
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "destination": "United States",
+  "region": "USA",
+  "lastReviewed": "2026-02-10",
+  "sourceComment": "Based on U.S. Department of State Foreign Affairs Manual (FAM) for B1/B2 Visitor Visas. Rules change periodically and must always be cross-verified with state.gov.",
+  "requiredDocumentTypes": [
+    "PASSPORT",
+    "PHOTO",
+    "EMPLOYMENT_LETTER",
+    "BANK_STATEMENT"
+  ],
+  "requirements": [
+    {
+      "id": "REQ-US-PASSPORT-VALIDITY",
+      "documentType": "PASSPORT",
+      "severity": "BLOCKER",
+      "description": "Passport must be valid for at least 6 months beyond intended period of stay (unless country is exempt under Six-Month Club).",
+      "whyRequired": "INA section 212(a)(7)(B)(i)(I) mandates 6-month validity for non-immigrant entry.",
+      "checkFn": "checkPassportValidityGeneral",
+      "params": {
+        "warnIfUnderMonths": 6
+      }
+    },
+    {
+      "id": "REQ-US-PHOTO-SPECS",
+      "documentType": "PHOTO",
+      "severity": "BLOCKER",
+      "description": "2x2 inch (51x51mm) square photograph taken within the last 6 months.",
+      "whyRequired": "State Dept requires strict square format with head between 1 and 1 3/8 inches.",
+      "checkFn": "checkPhotoQuality",
+      "params": {}
+    },
+    {
+      "id": "REQ-US-NAME-MATCH",
+      "documentType": "ALL",
+      "severity": "BLOCKER",
+      "description": "Exact name alignment between DS-160 declaration, passport, and supporting materials.",
+      "whyRequired": "Discrepancies halt consular processing and background check issuance.",
+      "checkFn": "checkNameConsistency",
+      "params": {}
+    },
+    {
+      "id": "REQ-US-FINANCIAL-TIES",
+      "documentType": "BANK_STATEMENT",
+      "severity": "WARNING",
+      "description": "Proof of financial solvency and funds to support U.S. travel without unauthorized employment.",
+      "whyRequired": "Section 214(b) presumes immigrant intent; liquid assets rebut this presumption.",
+      "checkFn": "checkBankStatement",
+      "params": {
+        "minPeriodMonths": 3,
+        "maxAgeDays": 60,
+        "minEurEquivalent": 3000
+      }
+    },
+    {
+      "id": "REQ-US-PRIOR-REJECTION",
+      "documentType": "REJECTION_LETTER",
+      "severity": "INFO",
+      "description": "Declaration of previous 214(b) or other visa refusals.",
+      "whyRequired": "Must be declared on Form DS-160; consular officers view all past worldwide refusals.",
+      "checkFn": "checkPriorRejection",
+      "params": {}
+    }
+  ]
+}
