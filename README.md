@@ -36,7 +36,7 @@ The initial migration creates the schema in an empty PostgreSQL database. It doe
 ```bash
 npm run dev
 ```
-Open **[http://localhost:3000](http://localhost:3000)** in your browser.
+Open **(https://visa-vault-p8w5.vercel.app/))** in your browser.
 
 ### 4. Run Unit Tests
 ```bash
